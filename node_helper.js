@@ -5,7 +5,7 @@
  * {{LICENCE}} Licensed.
  */
 
-var NodeHelper = require('node_helper');
+var NodeHelper = require("node_helper");
 
 module.exports = NodeHelper.create({
 
@@ -18,7 +18,7 @@ module.exports = NodeHelper.create({
 	 * argument payload mixed - The payload of the notification.
 	 */
 	socketNotificationReceived: function(notification, payload) {
-		if (notification === 'NOTIFICATION_TEST') {
+		if (notification === "NOTIFICATION_TEST") {
 			Log.log("Working notification system. Notification:", notification, "payload: ", payload);
 			// Send notification
 			this.sendNotificationTest();
@@ -27,7 +27,7 @@ module.exports = NodeHelper.create({
 
 	// Example function send notification test
 	sendNotificationTest: function(payload) {
-        this.sendSocketNotification("NOTIFICATION_TEST", payload);
+		this.sendSocketNotification("NOTIFICATION_TEST", payload);
 	},
 
 	// this you can create extra routes for your module
