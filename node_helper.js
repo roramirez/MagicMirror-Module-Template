@@ -19,9 +19,9 @@ module.exports = NodeHelper.create({
 	 */
 	socketNotificationReceived: function(notification, payload) {
 		if (notification === "NOTIFICATION_TEST") {
-			Log.log("Working notification system. Notification:", notification, "payload: ", payload);
+			console.log("Working notification system. Notification:", notification, "payload: ", payload);
 			// Send notification
-			this.sendNotificationTest();
+			this.sendNotificationTest(this.anotherFunction()); //Is possible send objects :)
 		}
 	},
 
@@ -42,6 +42,6 @@ module.exports = NodeHelper.create({
 
 	// Test another function
 	anotherFunction: function() {
-		return {test: 12345};
+		return {date: new Date()};
 	}
 });
