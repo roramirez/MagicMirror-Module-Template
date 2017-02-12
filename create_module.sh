@@ -9,3 +9,10 @@
 # By Rodrigo Ramìrez Norambuena https://rodrigoramirez.com
 # MIT Licensed.
 #
+
+REPOSITORY_URL=https://github.com/roramirez/MagicMirror-Module-Template
+
+if ! [ -x "$(command -v git)" ]; then
+	echo "Please install git"
+	exit 1
+fi
