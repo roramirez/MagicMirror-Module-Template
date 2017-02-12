@@ -110,6 +110,15 @@ Module.register("MagicMirror-Module-Template", {
 		return [];
 	},
 
+	// Load translations files
+	getTranslations: function() {
+		//FIXME: This can be load a one file javascript definition
+		return {
+			en: "translations/en.json",
+			es: "translations/es.json"
+		};
+	},
+
 	processData: function(data) {
 		var self = this;
 		this.dataRequest = data;
