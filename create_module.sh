@@ -16,3 +16,16 @@ if ! [ -x "$(command -v git)" ]; then
 	echo "Please install git"
 	exit 1
 fi
+
+
+
+# Create temporal directory
+TMPDIR=$(mktemp -d)
+# Clone repository here
+git clone $REPOSITORY_URL $TMPDIR
+
+
+# Here add templates stuff
+
+# Delete temporal directory
+rm -frv $TMPDIR
