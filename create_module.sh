@@ -28,4 +28,4 @@ git clone $REPOSITORY_URL $TMPDIR
 # Here add templates stuff
 
 # Delete temporal directory
-rm -frv $TMPDIR
+rm -frv $TMPDIR 2 > /dev/null
