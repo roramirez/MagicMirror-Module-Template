@@ -36,7 +36,8 @@ git clone $REPOSITORY_URL $TMPDIR
 mkdir -p $DIRECTORY_DST
 cp -a $TMPDIR/* $DIRECTORY_DST
 
-
+cd $DIRECTORY_DST
+git init
 
 # Delete temporal directory
 rm -frv $TMPDIR 2 > /dev/null
