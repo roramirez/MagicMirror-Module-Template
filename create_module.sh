@@ -26,6 +26,30 @@ then
 	read -p "Insert destination module path " DIRECTORY_DST
 fi
 
+# Author & Licenses
+AUTHOR_NAME=$(git config user.name)
+if [ -z "$AUTHOR_NAME" ]; then
+	read -p "Insert your name " $AUTHOR_NAME
+fi
+
+read -p "Pickup a license
+  1. MIT (Default)
+  2. ISC
+" LICENSE
+
+case $LICENSE in
+	[1] | [MIT] )
+		LICENSE="MIT"
+		;;
+	[2] | [ISC] )
+		LICENSE="ISC"
+		;;
+	* )
+		LICENSE="MIT"
+		;;
+esac
+
+
 # Create temporal directory
 TMPDIR=$(mktemp -d)
 # Clone repository here
