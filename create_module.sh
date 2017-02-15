@@ -17,7 +17,14 @@ if ! [ -x "$(command -v git)" ]; then
 	exit 1
 fi
 
+read -p "Insert your module name? " MODULE_NAME
 
+DIRECTORY_DST="/home/pi/MagicMirror/modules/$MODULE_NAME"
+read -p "Do you want create in $DIRECTORY_DST (y/n) " choice
+if [[ ! $choice =~ ^[Yy]$ ]]
+then
+	read -p "Insert destination module path " DIRECTORY_DST
+fi
 
 # Create temporal directory
 TMPDIR=$(mktemp -d)
@@ -26,6 +33,10 @@ git clone $REPOSITORY_URL $TMPDIR
 
 
 # Here add templates stuff
+mkdir -p $DIRECTORY_DST
+cp -a $TMPDIR/* $DIRECTORY_DST
+
+
 
 # Delete temporal directory
 rm -frv $TMPDIR 2 > /dev/null
