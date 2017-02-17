@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "{{DESCRIPTION}}",
   "main": "{{MODULE_NAME}}.js",
-  "author": "{{AUTHOR_NAME",
+  "author": "{{AUTHOR_NAME}}",
   "license": "{{LICENSE}}",
   "devDependencies": {
     "grunt": "latest",
