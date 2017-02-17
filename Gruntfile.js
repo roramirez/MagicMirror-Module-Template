@@ -50,7 +50,7 @@ module.exports = function(grunt) {
 						"MD038": false
 					}
 				},
-				src: ["README.md", "CHANGELOG.md", "LICENSE.md"]
+				src: ["README.md", "CHANGELOG.md", "LICENSE.txt"]
 			}
 		},
 		yamllint: {
