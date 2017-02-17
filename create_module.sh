@@ -11,6 +11,7 @@
 #
 
 REPOSITORY_URL=https://github.com/roramirez/MagicMirror-Module-Template
+YEAR=$(date +"%Y")
 
 if ! [ -x "$(command -v git)" ]; then
 	echo "Please install git"
