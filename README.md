@@ -9,11 +9,14 @@ There samples of code for:
 
 Also this module include tasks for checking your code. For that you need install the developer dependencies.
 
-`cd MI_MODULE_PATH`
-`npm install`
+```
+cd MI_MODULE_PATH && npm install 
+```
 
 Run the grunt
-`./node_modules/grunt/bin/grunt`
+```
+./node_modules/grunt/bin/grunt
+```
 
 Includes configuration of code and style used in MagicMirror core. Also to test these things in travis, previously you need active your repository in Travis.
 
