@@ -3,8 +3,8 @@
 /* Magic Mirror
  * Module: {{MODULE_NAME}}
  *
- * By {{AUTOR_NAME}}
- * {{LICENCE}} Licensed.
+ * By {{AUTHOR_NAME}}
+ * {{LICENSE}} Licensed.
  */
 
 Module.register("MagicMirror-Module-Template", {

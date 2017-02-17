@@ -1,8 +1,8 @@
 /* Magic Mirror
  * Node Helper: {{MODULE_NAME}}
  *
- * By {{AUTOR_NAME}}
- * {{LICENCE}} Licensed.
+ * By {{AUTHOR_NAME}}
+ * {{LICENSE}} Licensed.
  */
 
 var NodeHelper = require("node_helper");
