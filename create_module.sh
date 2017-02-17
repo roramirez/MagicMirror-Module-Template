@@ -21,10 +21,17 @@ fi
 read -p "Insert your module name? " MODULE_NAME
 
 DIRECTORY_DST="/home/pi/MagicMirror/modules/$MODULE_NAME"
-read -p "Do you want create in $DIRECTORY_DST (y/n) " choice
+read -p "Do you want create in $DIRECTORY_DST (Y/n) " choice
 if [[ ! $choice =~ ^[Yy]$ ]]
 then
 	read -p "Insert destination module path " DIRECTORY_DST
+fi
+
+if [ -d "$DIRECTORY_DST" ]; then
+	echo "Warning!. The destination $DIRECTORY_DST exists"
+	echo "To prevent override please rename destination directory"
+	echo "or run again with another name module or destination path"
+	exit 1
 fi
 
 # Author & Licenses
@@ -60,6 +67,20 @@ git clone $REPOSITORY_URL $TMPDIR
 # Here add templates stuff
 mkdir -p $DIRECTORY_DST
 cp -a $TMPDIR/* $DIRECTORY_DST
+mv $DIRECTORY_DST/MagicMirror-Module-Template.js $DIRECTORY_DST/$MODULE_NAME.js
+mv $DIRECTORY_DST/MagicMirror-Module-Template.css $DIRECTORY_DST/$MODULE_NAME.css
+mv $DIRECTORY_DST/templates/licenses/$LICENSE $DIRECTORY_DST/LICENSE.txt
+mv $DIRECTORY_DST/templates/CHANGELOG.md $DIRECTORY_DST/
+mv $DIRECTORY_DST/templates/README.md $DIRECTORY_DST/
+mv $DIRECTORY_DST/templates/package.json $DIRECTORY_DST/
+rm -frv $DIRECTORY_DST/templates > /dev/null
+
+
+sed -i s/\{\{MODULE_NAME\}\}/$MODULE_NAME/g $DIRECTORY_DST/*.*
+sed -i s/\{\{AUTHOR_NAME\}\}/"$AUTHOR_NAME"/g $DIRECTORY_DST/*.*
+sed -i s/\{\{LICENSE\}\}/$LICENSE/g $DIRECTORY_DST/*.*
+sed -i s/\{\{YEAR\}\}/$YEAR/g $DIRECTORY_DST/*.*
+
 
 cd $DIRECTORY_DST
 git init
