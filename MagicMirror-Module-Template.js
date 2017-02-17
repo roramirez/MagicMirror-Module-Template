@@ -7,7 +7,7 @@
  * {{LICENSE}} Licensed.
  */
 
-Module.register("MagicMirror-Module-Template", {
+Module.register("{{MODULE_NAME}}", {
 	defaults: {
 		updateInterval: 60000,
 		retryDelay: 5000
@@ -127,12 +127,12 @@ Module.register("MagicMirror-Module-Template", {
 
 		// the data if load
 		// send notification to helper
-		this.sendSocketNotification("NOTIFICATION_TEST", data);
+		this.sendSocketNotification("{{MODULE_NAME}}-NOTIFICATION_TEST", data);
 	},
 
 	// socketNotificationReceived from helper
 	socketNotificationReceived: function (notification, payload) {
-		if(notification === "NOTIFICATION_TEST") {
+		if(notification === "{{MODULE_NAME}}-NOTIFICATION_TEST") {
 			// set dataNotification
 			this.dataNotification = payload;
 			this.updateDom();

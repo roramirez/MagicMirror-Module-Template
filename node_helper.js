@@ -18,7 +18,7 @@ module.exports = NodeHelper.create({
 	 * argument payload mixed - The payload of the notification.
 	 */
 	socketNotificationReceived: function(notification, payload) {
-		if (notification === "NOTIFICATION_TEST") {
+		if (notification === "{{MODULE_NAME}}-NOTIFICATION_TEST") {
 			console.log("Working notification system. Notification:", notification, "payload: ", payload);
 			// Send notification
 			this.sendNotificationTest(this.anotherFunction()); //Is possible send objects :)
@@ -27,7 +27,7 @@ module.exports = NodeHelper.create({
 
 	// Example function send notification test
 	sendNotificationTest: function(payload) {
-		this.sendSocketNotification("NOTIFICATION_TEST", payload);
+		this.sendSocketNotification("{{MODULE_NAME}}-NOTIFICATION_TEST", payload);
 	},
 
 	// this you can create extra routes for your module
