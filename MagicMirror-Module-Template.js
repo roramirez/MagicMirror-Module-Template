@@ -94,13 +94,23 @@ Module.register("{{MODULE_NAME}}", {
 			var wrapperDataRequest = document.createElement("div");
 			// check format https://jsonplaceholder.typicode.com/posts/1
 			wrapperDataRequest.innerHTML = this.dataRequest.title;
+
+			var labelDataRequest = document.createElement("label");
+			// Use translate function
+			//             this id defined in translations files
+			labelDataRequest.innerHTML = this.translate("TITLE");
+
+
+			wrapper.appendChild(labelDataRequest);
 			wrapper.appendChild(wrapperDataRequest);
 		}
 
 		// Data from helper
 		if (this.dataNotification) {
 			var wrapperDataNotification = document.createElement("div");
-			wrapperDataNotification.innerHTML = this.dataNotification.date;
+			// translations  + datanotification
+			wrapperDataNotification.innerHTML =  this.translate("UPDATE") + ": " + this.dataNotification.date;
+
 			wrapper.appendChild(wrapperDataNotification);
 		}
 		return wrapper;
