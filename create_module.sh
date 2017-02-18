@@ -40,6 +40,11 @@ if is_mm_directory "."; then
 	MM_HOME=$(cd "." && pwd)
 fi
 
+# check directory above working directory (i.e. in modules directory)
+if is_mm_directory ".."; then
+	MM_HOME=$(cd ".." && pwd)
+fi
+
 if [ -d "$MM_HOME" ] ; then
 	echo "MagicMirror installation found in: $MM_HOME"
 else
@@ -127,7 +132,7 @@ sed -i s/\{\{MODULE_NAME\}\}/$MODULE_NAME/g $DIRECTORY_DST/*.*
 sed -i s/\{\{AUTHOR_NAME\}\}/"$AUTHOR_NAME"/g $DIRECTORY_DST/*.*
 sed -i s/\{\{LICENSE\}\}/$LICENSE/g $DIRECTORY_DST/*.*
 sed -i s/\{\{YEAR\}\}/$YEAR/g $DIRECTORY_DST/*.*
-sed -i s/\{\{DESCRIPTION\}\}/$DESCRIPTION/g $DIRECTORY_DST/*.*
+sed -i s/\{\{DESCRIPTION\}\}/"$DESCRIPTION"/g $DIRECTORY_DST/*.*
 
 
 cd $DIRECTORY_DST
