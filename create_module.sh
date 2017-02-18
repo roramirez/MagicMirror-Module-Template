@@ -95,7 +95,7 @@ echo "Type a short description of what your module does (leave empty to insert a
 read -p ": " $DESCRIPTION
 
 if [ "$DESCRIPTION" = "" ]; then
-	$DESCRIPTION="Todo: Insert description here!"
+	DESCRIPTION="Todo: Insert description here!"
 fi
 
 
