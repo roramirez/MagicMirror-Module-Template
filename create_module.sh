@@ -91,6 +91,14 @@ case $LICENSE in
 esac
 
 
+echo "Type a short description of what your module does (leave empty to insert a Todo)"
+read -p ": " $DESCRIPTION
+
+if [ "$DESCRIPTION" = "" ]; then
+	$DESCRIPTION="Todo: Insert description here!"
+fi
+
+
 # Create temporal directory
 TMPDIR=$(mktemp -d)
 # Clone repository here
@@ -119,6 +127,7 @@ sed -i s/\{\{MODULE_NAME\}\}/$MODULE_NAME/g $DIRECTORY_DST/*.*
 sed -i s/\{\{AUTHOR_NAME\}\}/"$AUTHOR_NAME"/g $DIRECTORY_DST/*.*
 sed -i s/\{\{LICENSE\}\}/$LICENSE/g $DIRECTORY_DST/*.*
 sed -i s/\{\{YEAR\}\}/$YEAR/g $DIRECTORY_DST/*.*
+sed -i s/\{\{DESCRIPTION\}\}/$DESCRIPTION/g $DIRECTORY_DST/*.*
 
 
 cd $DIRECTORY_DST

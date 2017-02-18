@@ -1,3 +1,3 @@
-## [0.1.0] - Unrelease
+## [0.1.0] - Unreleased
 
 First public release
