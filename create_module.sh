@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 #
-# This script create a module in base e MagicMirror-Module template
+# This script creates a module in base MagicMirror-Module template
 # You can get a copy from https://github.com/roramirez/MagicMirror-Module-Template
 #
 #
@@ -18,13 +18,46 @@ if ! [ -x "$(command -v git)" ]; then
 	exit 1
 fi
 
-read -p "Insert your module name? " MODULE_NAME
+# check if a directory is the MM directory (checks for correct content of package.json)
+is_mm_directory() {
+	TEST_STRING="\"url\": \"git+https://github.com/MichMich/MagicMirror.git\""
+	if grep -sq "$TEST_STRING" "$1/package.json"; then
+		# it is correct
+		return 0
+	fi
+	# wrong one
+	return 1
+}
 
-DIRECTORY_DST="/home/pi/MagicMirror/modules/$MODULE_NAME"
-read -p "Do you want create in $DIRECTORY_DST (Y/n) " choice
-if [[ ! $choice =~ ^[Yy]$ ]]
-then
-	read -p "Insert destination module path " DIRECTORY_DST
+MM_HOME=""
+# check default directory
+if is_mm_directory "$HOME/MagicMirror"; then
+	MM_HOME="$HOME/MagicMirror"
+fi
+
+# check working directory
+if is_mm_directory "."; then
+	MM_HOME=$(cd "." && pwd)
+fi
+
+if [ -d "$MM_HOME" ] ; then
+	echo "MagicMirror installation found in: $MM_HOME"
+else
+	echo "MagicMirror installation not found."
+	read -p "Please input its path now (or restart script in its directory): " MM_HOME
+fi
+
+read -p "Insert your module name: " MODULE_NAME
+if [ "$MODULE_NAME" = "" ]; then
+	echo "No module name entered."
+	exit 1
+fi
+
+DIRECTORY_DST="$MM_HOME/modules/$MODULE_NAME"
+
+read -p "Do you want create in $DIRECTORY_DST (y/N) " choice
+if [[ ! "$choice" =~ ^[Yy]$ ]]; then
+	read -p "Insert destination module path: " DIRECTORY_DST
 fi
 
 if [ -d "$DIRECTORY_DST" ]; then
@@ -37,13 +70,13 @@ fi
 # Author & Licenses
 AUTHOR_NAME=$(git config user.name)
 if [ -z "$AUTHOR_NAME" ]; then
-	read -p "Insert your name " $AUTHOR_NAME
+	read -p "Insert your full name: " $AUTHOR_NAME
 fi
 
 read -p "Pickup a license
   1. MIT (Default)
   2. ISC
-" LICENSE
+Choice: " LICENSE
 
 case $LICENSE in
 	[1] | [MIT] )
@@ -66,7 +99,10 @@ git clone $REPOSITORY_URL $TMPDIR
 
 # Here add templates stuff
 mkdir -p $DIRECTORY_DST
+
+# copy the needed stuff
 cp -a $TMPDIR/* $DIRECTORY_DST
+
 mv $DIRECTORY_DST/MagicMirror-Module-Template.js $DIRECTORY_DST/$MODULE_NAME.js
 mv $DIRECTORY_DST/MagicMirror-Module-Template.css $DIRECTORY_DST/$MODULE_NAME.css
 mv $DIRECTORY_DST/templates/licenses/$LICENSE $DIRECTORY_DST/LICENSE.txt
@@ -75,6 +111,9 @@ mv $DIRECTORY_DST/templates/README.md $DIRECTORY_DST/
 mv $DIRECTORY_DST/templates/package.json $DIRECTORY_DST/
 rm -frv $DIRECTORY_DST/templates > /dev/null
 
+# remove unneeded files
+rm $DIRECTORY_DST/LICENSE          # Module-Template-License
+rm $DIRECTORY_DST/create_module.sh # module creation script
 
 sed -i s/\{\{MODULE_NAME\}\}/$MODULE_NAME/g $DIRECTORY_DST/*.*
 sed -i s/\{\{AUTHOR_NAME\}\}/"$AUTHOR_NAME"/g $DIRECTORY_DST/*.*

@@ -19,8 +19,7 @@ Include configuration of code and style used in MagicMirror core. Also to test t
 
 ## Installation
 
-`curl -sL https://raw.githubusercontent.com/roramirez/MagicMirror-Module-Template/master/create_module.sh | bash`
-
+`bash -c "$(curl -sL https://raw.githubusercontent.com/roramirez/MagicMirror-Module-Template/master/create_module.sh)"`
 
 This create a module sample to start your developement.
 
