@@ -115,6 +115,10 @@ mkdir -p $DIRECTORY_DST
 
 # copy the needed stuff
 cp -a $TMPDIR/* $DIRECTORY_DST
+# Copy dot files issue #4
+cp -a $TMPDIR/.eslintrc.json $DIRECTORY_DST
+cp -a $TMPDIR/.stylelintrc $DIRECTORY_DST
+
 
 mv $DIRECTORY_DST/MagicMirror-Module-Template.js $DIRECTORY_DST/$MODULE_NAME.js
 mv $DIRECTORY_DST/MagicMirror-Module-Template.css $DIRECTORY_DST/$MODULE_NAME.css
