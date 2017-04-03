@@ -1,3 +1,6 @@
+## [1.1.1] - 2017-04-02
+- Fix missing files in project #4
+
 ## [1.1.0] - 2017-03-04
 - Add example use translations
 - Improvement configuration script and remote execution command
