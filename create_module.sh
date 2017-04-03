@@ -144,3 +144,8 @@ git init
 
 # Delete temporal directory
 rm -frv $TMPDIR 2 > /dev/null
+
+echo "Happy coding! Have fun you are an awesome developer :)"
+echo "here your development directory $DIRECTORY_DST"
+cd $DIRECTORY_DST
+ls $DIRECTORY_DST
