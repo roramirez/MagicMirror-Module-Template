@@ -3,6 +3,9 @@
   "version": "1.1.0",
   "description": "Module Base template for create new modules for MagicMirror",
   "main": "MagicMirror-Module-Template.js",
+  "scripts": {
+    "test": "./node_modules/grunt/bin/grunt"
+  },
   "author": "Rodrigo Ramírez Norambuena",
   "license": "MIT",
   "devDependencies": {
@@ -11,7 +14,7 @@
     "grunt-jsonlint": "latest",
     "grunt-markdownlint": "^1.0.13",
     "grunt-stylelint": "latest",
-    "grunt-yamllint": "latest",
+    "grunt-yamllint": "^0.3.0",
     "stylelint": "^7.10.1",
     "stylelint-config-standard": "latest",
     "time-grunt": "latest"
