@@ -13,12 +13,17 @@ Also this module include tasks for checking your code. For that you need install
 cd MI_MODULE_PATH && npm install 
 ```
 
-Run the grunt
+Run the `test` npm script
 ```
-./node_modules/grunt/bin/grunt
+npm test
 ```
 
-Includes configuration of code and style used in MagicMirror core. Also to test these things in travis, previously you need active your repository in Travis.
+Current Tests:
+- [ESLint](http://eslint.org/) for linting the javascript
+- [stylelint](https://stylelint.io/) for linting the CSS with [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard) as its base
+- [jsonlint](https://github.com/zaach/jsonlint) for linting the translation files
+- [markdownlint](https://github.com/DavidAnson/markdownlint) for checking the markdown files (`README.md`, `CHANGELOG.md`, `LICENSE.txt`)
+- [js-yaml](https://github.com/nodeca/js-yaml) to lint the `.travis.yml` (run through [grunt-yamllint](https://github.com/geedew/grunt-yamllint))
 
 
 ## Installation
