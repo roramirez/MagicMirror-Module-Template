@@ -122,7 +122,7 @@ Module.register("{{MODULE_NAME}}", {
 
 	getStyles: function () {
 		return [
-			'"{{MODULE_NAME}}.css',
+			"{{MODULE_NAME}}.css",
 		];
 	},
 
