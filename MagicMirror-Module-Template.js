@@ -120,6 +120,12 @@ Module.register("{{MODULE_NAME}}", {
 		return [];
 	},
 
+	getStyles: function () {
+		return [
+			'"{{MODULE_NAME}}.css',
+		];
+	},
+
 	// Load translations files
 	getTranslations: function() {
 		//FIXME: This can be load a one file javascript definition
