@@ -1,6 +1,6 @@
 {
   "name": "MagicMirror-Module-Template",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Module Base template for create new modules for MagicMirror",
   "main": "MagicMirror-Module-Template.js",
   "scripts": {
