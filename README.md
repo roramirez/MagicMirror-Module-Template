@@ -30,6 +30,6 @@ Current Tests:
 
 `bash -c "$(curl -sL https://raw.githubusercontent.com/roramirez/MagicMirror-Module-Template/master/create_module.sh)"`
 
-This creates a module example to start your developement.
+This creates a module example to start your development more easy.
 
 If you have any suggest, please let me know [by an issue](https://github.com/roramirez/MagicMirror-Module-Template/issues/new).
