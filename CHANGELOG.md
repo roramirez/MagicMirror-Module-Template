@@ -1,3 +1,8 @@
+## [1.3.0] - 2019-11-27
+- Fix sed command in create_module.sh in macOS
+- Include node 8, 10, 12 support
+- Add test for ESLint, stylelint, jsonlint, markdownlint and js-yaml
+
 ## [1.2.0] - 2017-07-21
 - Use getStyles for module
 - Include node 7 support
