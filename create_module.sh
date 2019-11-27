@@ -132,11 +132,20 @@ rm -frv $DIRECTORY_DST/templates > /dev/null
 rm $DIRECTORY_DST/LICENSE          # Module-Template-License
 rm $DIRECTORY_DST/create_module.sh # module creation script
 
-sed -i s/\{\{MODULE_NAME\}\}/$MODULE_NAME/g $DIRECTORY_DST/*.*
-sed -i s/\{\{AUTHOR_NAME\}\}/"$AUTHOR_NAME"/g $DIRECTORY_DST/*.*
-sed -i s/\{\{LICENSE\}\}/$LICENSE/g $DIRECTORY_DST/*.*
-sed -i s/\{\{YEAR\}\}/$YEAR/g $DIRECTORY_DST/*.*
-sed -i s/\{\{DESCRIPTION\}\}/"$DESCRIPTION"/g $DIRECTORY_DST/*.*
+# Based on https://stackoverflow.com/a/51060063
+# Default case for Linux sed, just use "-i"
+sedi=(-i)
+case "$(uname)" in
+  # For macOS, use two parameters
+  Darwin*) sedi=(-i "")
+esac
+
+# Expand the parameters in the actual call to "sed"
+sed "${sedi[@]}" -e s/\{\{MODULE_NAME\}\}/$MODULE_NAME/g $DIRECTORY_DST/*.*
+sed "${sedi[@]}" -e s/\{\{AUTHOR_NAME\}\}/"$AUTHOR_NAME"/g $DIRECTORY_DST/*.*
+sed "${sedi[@]}" -e s/\{\{LICENSE\}\}/$LICENSE/g $DIRECTORY_DST/*.*
+sed "${sedi[@]}" -e s/\{\{YEAR\}\}/$YEAR/g $DIRECTORY_DST/*.*
+sed "${sedi[@]}" -e s/\{\{DESCRIPTION\}\}/"$DESCRIPTION"/g $DIRECTORY_DST/*.*
 
 
 cd $DIRECTORY_DST
