@@ -75,7 +75,7 @@ fi
 # Author & Licenses
 AUTHOR_NAME=$(git config user.name)
 if [ -z "$AUTHOR_NAME" ]; then
-	read -p "Insert your full name: " AUTHOR_NAME
+	read -p "Insert your full name: " $AUTHOR_NAME
 fi
 
 read -p "Pickup a license
